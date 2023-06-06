@@ -4,6 +4,7 @@
   details:
     - locale: EN
       title: DMA Attacks
+      vulnType: Pentest
       description: >-
         <p>DMA (Direct Memory Access) attacks are a class of security threats
         that exploit the DMA feature present in many computer systems. DMA
