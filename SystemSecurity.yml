@@ -1,0 +1,302 @@
+- cvssv3: 'CVSS:3.1/AV:P/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N'
+  priority: 2
+  remediationComplexity: 2
+  details:
+    - locale: EN
+      title: DMA Attacks
+      description: >-
+        <p>DMA (Direct Memory Access) attacks are a class of security threats
+        that exploit the DMA feature present in many computer systems. DMA
+        allows hardware devices, such as network cards or USB controllers, to
+        access the system's memory directly without involving the CPU, enabling
+        faster data transfers.</p><p>In a DMA attack, an attacker gains physical
+        or remote access to a target system and leverages DMA capabilities to
+        directly read from or write to the system's memory. This access allows
+        the attacker to bypass traditional security measures, such as operating
+        system permissions or encryption, and potentially gain unauthorized
+        access to sensitive data or compromise the system's
+        integrity.</p><p>There are two main types of DMA
+        attacks:</p><ol><li><p>DMA Read Attacks: In this type of attack, the
+        attacker gains access to the system's memory and can read sensitive
+        information stored in the memory, including encryption keys, passwords,
+        or confidential data. The attacker can then use this information for
+        unauthorized purposes.</p></li><li><p>DMA Write Attacks: In a DMA write
+        attack, the attacker injects malicious data or code into the system's
+        memory, potentially overwriting critical data or modifying the system's
+        behavior. This can lead to unauthorized privilege escalation, injection
+        of malware, or modification of system settings.</p></li></ol><p>DMA
+        attacks can be executed through various means, including physical access
+        to the target system, compromised peripheral devices, or exploiting
+        vulnerabilities in system firmware or drivers. Some examples of DMA
+        attack vectors include FireWire, Thunderbolt, PCI Express, or PCMCIA
+        interfaces.</p>
+      remediation: >-
+        <p>Apply according counter measures via GPO (please also refer to the
+        references):<br><br>Firewire: <br><code>Computer Configuration &gt;
+        Administrative Templates &gt; System &gt; Device Installation &gt;
+        Device Installation Restrictions &gt; Prevent installation of devices
+        using drivers that match these device setup classes</code></p><p>Add the
+        following entries:</p><table><tbody><tr><th colspan="1"
+        rowspan="1"><p><strong>GUID</strong></p></th></tr><tr><td colspan="1"
+        rowspan="1"><p><strong>{7ebefbc0-3200-11d2-b4c2-00a0C9697d07}</strong></p></td></tr><tr><td
+        colspan="1"
+        rowspan="1"><p><strong>{c06ff265-ae09-48f0-812c-16753d7cba83}</strong></p></td></tr><tr><td
+        colspan="1"
+        rowspan="1"><p><strong>{d48179be-ec20-11d1-b6b8-00c04fa372a7}</strong></p></td></tr><tr><td
+        colspan="1"
+        rowspan="1"><p><strong>{6bdd1fc1-810f-11d0-bec7-08002be2092f}</strong></p></td></tr></tbody></table><p></p><p>PCIe:<br><code>Computer
+        Configuration &gt; Administrative Templates &gt; Windows Components &gt;
+        BitLocker Drive Encryption &gt; Disable new DMA devices when this
+        computer is locked</code></p><p>General protection against DMA
+        attacks:</p><p><code>Computer Configuration &gt; Administrative
+        Templates &gt; System &gt; Device Guard &gt; Turn on Virtualization
+        Based Security &gt; Secure Boot with DMA</code></p>
+      references:
+        - >-
+          https://www.synacktiv.com/en/publications/practical-dma-attack-on-windows-10.html
+        - 'https://www.scip.ch/?labs.20211209'
+      customFields: []
+  category: System Security
+- cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N'
+  priority: 2
+  remediationComplexity: 1
+  details:
+    - locale: EN
+      title: LSA Protection Settings
+      vulnType: Pentest
+      description: >-
+        <p>LSA Protection, also known as RunAsPPL (Protected Process Light), is
+        a security feature introduced in Windows 10 and Windows Server 2016. It
+        is designed to protect critical operating system processes by running
+        them with an elevated level of protection.</p><p>LSA (Local Security
+        Authority) is a subsystem in Windows responsible for security-related
+        operations. LSA Protection ensures that certain critical LSA processes
+        are isolated and run in a restricted mode called "Protected Process
+        Light." This mode provides additional security measures to prevent
+        unauthorized access or tampering of these processes.</p><p>Protected
+        Process Light (PPL) restricts the interactions and privileges of a
+        process, making it more resistant to attacks and unauthorized
+        modifications. PPL processes are given a higher integrity level, making
+        it difficult for lower-privileged processes or malware to tamper with
+        them. This helps protect critical system functions and sensitive
+        data.</p><p>By running LSA processes as PPL, Windows enhances the
+        overall security of the operating system and helps mitigate various
+        attack vectors that target system-level processes.</p>
+      observation: <p><br><br></p>
+      remediation: >-
+        <p>Activate LSA Protection by setting the following registry
+        key:<br><code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\LSA
+        RunAsPPL= 1</code></p>
+      references:
+        - 'https://itm4n.github.io/lsass-runasppl/'
+      customFields: []
+  category: System Security
+- cvssv3: 'CVSS:3.1/AV:P/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H'
+  priority: 2
+  remediationComplexity: 1
+  details:
+    - locale: EN
+      title: Disk Encryption Settings
+      vulnType: Pentest
+      description: >-
+        <p>Disk encryption is a security measure used to protect the data stored
+        on a storage device, such as a hard drive or solid-state drive (SSD). It
+        ensures that the data remains unreadable and inaccessible to
+        unauthorized users even if the device is lost, stolen, or accessed
+        without proper authorization.</p><p>The primary purpose of disk
+        encryption is to encrypt the entire contents of the disk, including the
+        operating system, applications, and user data. It prevents unauthorized
+        individuals from accessing or extracting sensitive information from the
+        disk by encrypting it using a cryptographic algorithm.</p><p>One method
+        to enhance the security of disk encryption is through preboot
+        authentication (PBA). PBA adds an additional layer of protection by
+        requiring users to provide authentication credentials before the
+        operating system boots up. This means that even if someone gains
+        physical access to the device, they cannot bypass the encryption without
+        providing the correct authentication.</p><p>Preboot authentication
+        typically involves a separate login screen or interface that prompts
+        users to enter a password or other authentication factors, such as a PIN
+        or biometric data (e.g., fingerprint or facial recognition). Only upon
+        successful authentication will the device proceed to boot up the
+        operating system and decrypt the disk.</p><p>By combining disk
+        encryption with preboot authentication, the data on the encrypted disk
+        remains secure from unauthorized access. Even if an attacker manages to
+        steal or gain physical access to the device, they would need to bypass
+        the preboot authentication to gain access to the encrypted
+        data.</p><p>It is important to choose strong authentication credentials
+        and regularly update them to maintain the security of the disk
+        encryption. Additionally, ensuring the device's firmware and software
+        are up to date helps protect against known vulnerabilities and ensures
+        the effectiveness of the encryption and authentication mechanisms.</p>
+      remediation: >-
+        <p>If the encryption is meant to protect against sophisticated attacks,
+        the TPM only mode for BitLocker is not sufficient. One of the
+        alternative solutions with an additional PIN or USB device should be
+        taken into consideration[2]. Another idea would be to make use of 3rd
+        party applications that will give the user a SSO feeling that integrate
+        with BitLocker.</p>
+      references:
+        - '[1] https://luemmelsec.github.io/Go-away-BitLocker-you-are-drunk/'
+        - >-
+          [2]
+          https://learn.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-countermeasures
+      customFields: []
+  category: System Security
+- cvssv3: 'CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N'
+  priority: 2
+  remediationComplexity: 1
+  details:
+    - locale: EN
+      title: Removal Media Control Settings
+      vulnType: Pentest
+      description: >-
+        <p>Removable media control is a security feature that helps protect
+        against various threats related to the use of removable storage devices
+        such as USB flash drives, external hard drives, and optical media.
+        Here's a brief description of why removable media control is considered
+        a security feature and the threats it can help
+        mitigate:</p><ol><li><p>Unauthorized data access: Preventing
+        unauthorized access to sensitive data on removable
+        devices.</p></li><li><p>Malware introduction and spread: Reducing the
+        risk of malware infections and the spread of malicious code through
+        removable media.</p></li><li><p>"Bad USB" or "Bad Ethernet" devices that
+        disguise as legitimate USB devices emulating HIDs like a keyboard or a
+        network adapter to execute code or sniff
+        credentials.</p></li><li><p>Data loss prevention: Implementing measures
+        to prevent accidental data loss or unauthorized copying of sensitive
+        information.</p></li><li><p>Unauthorized software or applications:
+        Restricting the introduction of unauthorized software onto corporate
+        devices through removable media.</p></li><li><p>Compliance and
+        regulatory requirements: Enforcing policies to meet industry regulations
+        and demonstrate data security compliance.</p></li></ol><p><a
+        target="_blank" rel="noopener noreferrer nofollow"
+        href="http://compliance.By">By</a> implementing removable media control
+        as a security feature, organizations can mitigate the risks associated
+        with unauthorized data access, malware infections, data loss,
+        unauthorized software execution, and non-compliance with regulations. It
+        provides an additional layer of protection to safeguard sensitive
+        information and maintain the integrity and security of systems and
+        networks.</p>
+      remediation: >-
+        <p>Implement according countermeasures that prevent attacks over
+        removeable media.<br>This can for example be done via
+        GPOs:</p><ol><li><p>Device installation restrictions: Group Policy can
+        be used to restrict the installation of USB devices on computers. It
+        allows administrators to define policies that prevent the installation
+        of unrecognized or unauthorized USB devices, thereby mitigating the risk
+        of "Bad USB" attacks.</p></li><li><p>USB port disabling: Group Policy
+        enables administrators to disable specific USB ports on computers. By
+        selectively disabling USB ports, organizations can limit the risk of
+        unauthorized USB devices being connected and prevent potential "Bad USB"
+        attacks.</p></li><li><p>Windows Defender Application Control: Windows
+        Defender Application Control (WDAC) is a security feature available in
+        Windows 10 Enterprise and Windows Server editions. It uses Group Policy
+        to define policies that allow only trusted applications to run on a
+        system. By enforcing strict application control policies, organizations
+        can reduce the risk of "Bad USB" attacks by blocking the execution of
+        unauthorized or malicious code from USB
+        devices.</p></li></ol><p></p><p><br></p>
+      references: []
+      customFields: []
+  category: System Security
+- cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N'
+  priority: 2
+  remediationComplexity: 1
+  details:
+    - locale: EN
+      title: Access to System Tools
+      vulnType: Pentest
+      description: >-
+        <p>System tools on a Windows system refer to built-in utilities and
+        applications that provide various functionalities for managing and
+        configuring the operating system. These tools are typically designed to
+        perform critical system tasks, diagnostics, troubleshooting, system
+        configuration, and administration. Some common examples of system tools
+        in Windows include Command Prompt (cmd.exe), PowerShell, Task Manager,
+        Registry Editor, Event Viewer, Device Manager, and Disk Management,
+        among others.</p><p>While system tools are essential for system
+        administrators and power users to effectively manage and maintain the
+        system, granting access to these tools to normal users can pose security
+        concerns. Here are a few reasons:</p><ol><li><p>Unauthorized System
+        Modifications: System tools often have the capability to modify system
+        settings, configurations, and critical files. If normal users have
+        access to these tools, they may unintentionally or maliciously modify
+        system settings, leading to system instability, performance issues, or
+        security vulnerabilities.</p></li><li><p>Privilege Escalation: Certain
+        system tools can be leveraged to escalate privileges or execute commands
+        with elevated permissions. If normal users have access to such tools,
+        they may attempt to exploit them to gain unauthorized access or perform
+        actions that they should not have privileges
+        for.</p></li><li><p>Exposure of Sensitive Information: System tools can
+        provide access to sensitive system information, logs, or files that may
+        contain confidential data. Allowing normal users to access these tools
+        may expose sensitive information or compromise data
+        privacy.</p></li><li><p>Malware Execution: Malware often attempts to
+        leverage system tools to carry out its malicious activities. Granting
+        access to these tools to normal users increases the risk of
+        inadvertently executing malware or running malicious
+        commands.</p></li></ol><p>To mitigate these security concerns, it is
+        generally recommended to restrict access to system tools and limit their
+        usage to trusted administrators or privileged accounts. User access
+        control, proper permission settings, and implementing the principle of
+        least privilege can help minimize the risk associated with normal users
+        accessing system tools.</p>
+      remediation: >-
+        <p>Restrict access to tools that are meant mainly for administrative
+        purposes as much as possible.<br>This can be done via GPOs or
+        Intune.</p>
+      references: []
+      customFields: []
+  category: System Security
+- cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:N'
+  priority: 3
+  remediationComplexity: 1
+  details:
+    - locale: EN
+      title: Credential Guard Settings
+      vulnType: Pentest
+      description: >-
+        <p>Credential Guard is a security feature introduced in Windows 10 and
+        Windows Server 2016 that helps protect against credential theft and
+        unauthorized access to sensitive credentials on a Windows system. It is
+        specifically designed to defend against Pass-the-Hash (PtH) and
+        Pass-the-Ticket (PtT) attacks.</p><p>Credential theft attacks typically
+        target the authentication process by stealing or manipulating user
+        credentials, such as usernames and passwords, stored in memory or the
+        Local Security Authority (LSA) process. These attacks allow adversaries
+        to gain unauthorized access to systems, networks, or sensitive
+        resources.</p><p>Credential Guard leverages virtualization-based
+        security to isolate and protect these credentials. It utilizes
+        virtualization technology, such as Hyper-V, to create a separate
+        isolated environment called the "security boundary." Within this
+        security boundary, sensitive credentials are stored and processed,
+        effectively isolating them from the rest of the system, including the
+        operating system and user processes.</p><p>By isolating credentials in a
+        protected environment, Credential Guard helps prevent unauthorized
+        access or tampering by malicious actors. It ensures that even if an
+        attacker gains access to the operating system or compromises the system
+        at a lower level, they cannot access or extract sensitive credentials
+        stored within Credential Guard.</p><p>Key features and benefits of
+        Credential Guard include:</p><ol><li><p>Protection against Pass-the-Hash
+        and Pass-the-Ticket attacks.</p></li><li><p>Isolation of credentials in
+        a separate security boundary.</p></li><li><p>Use of virtualization-based
+        security technology for enhanced
+        protection.</p></li><li><p>Compatibility with existing authentication
+        methods, such as Kerberos and NTLM.</p></li><li><p>Integration with
+        other security technologies, like Windows Hello for Business and Windows
+        Defender Credential Guard.</p></li></ol><p>Overall, Credential Guard
+        strengthens the security posture of Windows systems by safeguarding
+        sensitive credentials and mitigating the risk of credential theft
+        attacks.</p>
+      remediation: >-
+        <p>Follow the steps provided by Microsoft [1] to enabled Credential
+        Guard.</p>
+      references:
+        - >-
+          [1]
+          https://learn.microsoft.com/en-us/windows/security/identity-protection/credential-guard/credential-guard-manage
+        - 'https://blog.nviso.eu/2018/01/09/windows-credential-guard-mimikatz/'
+        - >-
+          https://blog.netwrix.com/2023/02/06/using-windows-defender-credential-guard-to-protect-privileged-credentials/
+      customFields: []
+  category: System Security
