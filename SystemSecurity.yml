@@ -1080,3 +1080,40 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
           https://learn.microsoft.com/en-us/powershell/scripting/learn/remoting/winrmsecurity?view=powershell-7.3
       customFields: []
   category: System Security
+  - cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
+  priority: 4
+  remediationComplexity: 1
+  details:
+    - locale: EN
+      title: Unquoted Service Paths
+      vulnType: Pentest
+      description: >-
+        <p>Windows services normally start executables. The executable path
+        allows the OS to find the correct executable to run for each service.
+        The following path is an example of a secure service
+        path:</p><p><code>"C:\Programs\Test
+        Folder\bin\service.exe"</code></p><p>The following path is an example of
+        an unsafe service path:</p><p><code>C:\Program Files\Test
+        Folder\bin\service.exe</code></p><p>When Windows attempts to read the
+        path to this executable, it interprets the space as a kind of terminator
+        if the path is not enclosed in <code>"</code>.&nbsp; So it will attempt
+        to execute the following (in
+        order):</p><p><code>C:\Program.exe</code></p><p><code>C:\Program
+        Files\Test.exe</code></p><p><code>C:\Program Files\Test
+        Folder\bin\service.exe</code></p><p>If the directories are configured
+        with inappropriate permissions, the attacker can place a malicious
+        executable file in them. If the service is set to run with
+        administrative privileges (e.g. SYSTEM), the attacker can elevate its
+        privileges and gain unauthorized administrative access to the system. In
+        this case the attacker would want to try to add the first 2 files to the
+        filesystem.</p>
+      remediation: >-
+        <p>The first step would be to ask the vendor of the affected application
+        for an updated versions that fixes the misconfiguration.</p><p>A manual
+        workaround would be to manually put the binary path into quotes.</p>
+      references:
+        - >-
+          https://www.ired.team/offensive-security/privilege-escalation/unquoted-service-paths
+      customFields: []
+  category: System Security
+
