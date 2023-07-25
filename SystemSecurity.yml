@@ -1,4 +1,4 @@
-cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
+- cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
   category: System Security
   details:
     - locale: EN
@@ -61,7 +61,7 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
       customFields: []
   priority: 2
   remediationComplexity: 1
-  cvssv3: 'CVSS:3.1/AV:P/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N'
+- cvssv3: 'CVSS:3.1/AV:P/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N'
   priority: 2
   remediationComplexity: 2
   details:
@@ -120,7 +120,7 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
         - 'https://www.scip.ch/?labs.20211209'
       customFields: []
   category: System Security
-  cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N'
+- cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N'
   priority: 2
   remediationComplexity: 1
   details:
@@ -154,7 +154,7 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
         - 'https://itm4n.github.io/lsass-runasppl/'
       customFields: []
   category: System Security
-  cvssv3: 'CVSS:3.1/AV:P/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H'
+- cvssv3: 'CVSS:3.1/AV:P/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H'
   priority: 2
   remediationComplexity: 1
   details:
@@ -205,7 +205,7 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
           https://learn.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-countermeasures
       customFields: []
   category: System Security
-  cvssv3: 'CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N'
+- cvssv3: 'CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N'
   priority: 2
   remediationComplexity: 1
   details:
@@ -262,7 +262,7 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
       references: []
       customFields: []
   category: System Security
-  cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:N'
+- cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:N'
   priority: 3
   remediationComplexity: 1
   details:
@@ -314,7 +314,7 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
           https://blog.netwrix.com/2023/02/06/using-windows-defender-credential-guard-to-protect-privileged-credentials/
       customFields: []
   category: System Security
-  cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N'
+- cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N'
   priority: 2
   remediationComplexity: 3
   details:
@@ -371,7 +371,7 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
           https://learn.microsoft.com/de-de/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview
       customFields: []
   category: System Security
-  cvssv3: 'CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L'
+- cvssv3: 'CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L'
   priority: 3
   remediationComplexity: 1
   details:
@@ -438,7 +438,7 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
           https://www.blackhillsinfosec.com/mitm6-strikes-again-the-dark-side-of-ipv6/
       customFields: []
   category: System Security
-  cvssv3: 'CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N'
+- cvssv3: 'CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N'
   priority: 1
   remediationComplexity: 1
   details:
@@ -483,7 +483,7 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
       references: []
       customFields: []
   category: System Security
-  cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:H/A:N'
+- cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:H/A:N'
   priority: 2
   remediationComplexity: 2
   details:
@@ -521,7 +521,7 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
       references: []
       customFields: []
   category: System Security
-  cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:H/A:N'
+- cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:H/A:N'
   details:
     - locale: EN
       title: WDAC Settings
@@ -587,7 +587,7 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
           https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/windows-defender-application-control
       customFields: []
   category: System Security
-  cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N'
+- cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N'
   priority: 2
   remediationComplexity: 1
   details:
@@ -1080,7 +1080,7 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
           https://learn.microsoft.com/en-us/powershell/scripting/learn/remoting/winrmsecurity?view=powershell-7.3
       customFields: []
   category: System Security
-  - cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
+- cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
   priority: 4
   remediationComplexity: 1
   details:
@@ -1116,4 +1116,3 @@ cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
           https://www.ired.team/offensive-security/privilege-escalation/unquoted-service-paths
       customFields: []
   category: System Security
-
