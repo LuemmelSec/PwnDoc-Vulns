@@ -1,0 +1,86 @@
+- cvssv3: 'CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H'
+  priority: 3
+  remediationComplexity: 2
+  category: Physical Security
+  details:
+    - references: []
+      locale: EN
+      title: MIFARE Classic - Authentication by UID only
+      vulnType: Pentest
+      description: >-
+        <p>Each NFC tag has a unique ID (UID). This UID can be read by everyone
+        and is not protected in the case of MIFARE Classic tags.<br>Systems can
+        be configured to only check the UID as an authentication feature, where
+        no validation against data in the tag's encrypted sectors is taking
+        place.<br><br>All an attacker would need to do is “touch” an ID tag with
+        e.g., a Flipper Zero or other according hardware to fetch the UID. Think
+        of standing in an elevator, the keycard on a lanyard, and just walking
+        by your target. After successfully fetching the UID, it would be
+        possible to impersonate that user granting access to all his resources.
+        <br>This might be doors, gates, hotel rooms, a skiing-pass, student ID
+        or a printing solution. <br><br>Another way of attacking such weak
+        implementations is a brute force attack against the UID. This might
+        obviously take a long time, but nevertheless poses a risk.</p>
+      observation: <p></p><p></p>
+      remediation: >-
+        <p>One point to address is user awareness. If an attacker cannot “touch”
+        the ID card, it cannot be read. This, however, interferes with the
+        corporate policy to always wear your badge visibly to everyone. So at
+        least outside of the campus, badges should not be worn visibly.<br>The
+        other thing is to check whether the solution is capable of not only
+        relying on the UID, but rather data that is stored in one of the secured
+        sectors. In this course you need to make sure to use safe technology
+        like <em>MIFARE DESFire</em>, as for example the MIFARE Classic
+        technology is broken and full of security flaws.</p>
+      customFields: []
+
+- cvssv3: 'CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H'
+  priority: 3
+  remediationComplexity: 3
+  category: Physical Security
+  details:
+    - references:
+        - >-
+          [1]
+          https://www.researchgate.net/publication/1915327_A_practical_attack_on_the_MIFARE_classic
+        - >-
+          [2]
+          http://www.cs.ru.nl/R.Verdult/Ciphertext-only_Cryptanalysis_on_Hardened_Mifare_Classic_Cards-CCS_2015.pdf
+        - '[3] https://github.com/equipter/mfkey32v2'
+        - >-
+          [4]
+          https://www.mifare.net/en/products/chip-card-ics/mifare-classic/security-statement-on-crypto1-implementations/
+      locale: EN
+      title: Usage of MIFARE Classic technology
+      vulnType: Pentest
+      description: >-
+        <p>In 2008 the proprietary encryption algorithm <em>CRYPTO-1</em>,
+        developed by NXP, was completely reverse engineered by the Radboud
+        University Nijmegen [1]. <br>In 2009, the MIFARE Classic Offline Cracker
+        (MFOC) was released, wrapped around the so called nested attack which
+        makes it possible to recover all sector encryption keys when only one
+        key is known. <br>Following was the <em>MFCUK-MiFare Classic Universal
+        toolkit</em>, which allowed to retrieve a valid key, even if no key was
+        known at all.<br>The answer to these flaws was the release of the
+        <em>MIFARE Classic EV1</em> tags as well as the MIFARE DESFire tags by
+        NXP, which had several security improvements over the original
+        implementation.<br>However, in 2015 the <em>hardnested attack [2]</em>
+        was published, which allowed to even crack these hardened tags open by a
+        side-channel attack.</p><p>As soon as an attacker gets a hold on a
+        vulnerable tag, he can recover all keys, access all sectors, tamper with
+        the content, and clone the tag.<br>Attack scenarios might include a lost
+        tag or stolen tag, a cloned tag or even an inside
+        attacker.</p><p>Another way of abuse involves just having the UID of a
+        card (read in a second with a Flipper Zero or Proxmark3) and emulate it
+        to collect encrypted nonces [3] from a valid reader to later be able to
+        offline crack the encryption keys. In some cases this is not sufficient
+        and an attacker needs to sniff traffic from a legit card and reader to
+        successfully collect the nonces.</p>
+      observation: <p></p><p></p>
+      remediation: >-
+        <p>According to NXP <em>MIFARE Classic</em> cards are no longer
+        considered save [4] and should not be used anymore, when it comes to
+        managing access rights or other security relevant implementations. The
+        most modern successor is <em>MIFARE DESFire</em>. </p>
+      customFields: []
+
