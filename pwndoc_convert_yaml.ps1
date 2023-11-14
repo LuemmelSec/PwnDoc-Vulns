@@ -1,4 +1,6 @@
-# Read the content from the provided 
+# Small parser for PwnDoc vulnerability exports, that will sort them by category and write a file for each of them.
+# I used it to pre-filter for the categories I wanted to release to public.
+# Read the content from the provided .yml file from pwndoc
 $vulns = "path\to\your\.yml"
 $fileContent = Get-Content -Path $vulns -Raw
 
