@@ -63,6 +63,7 @@
       customFields: []
   priority: 2
   remediationComplexity: 1
+
 - cvssv3: 'CVSS:3.1/AV:P/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N'
   priority: 2
   remediationComplexity: 2
@@ -122,6 +123,7 @@
         - 'https://www.scip.ch/?labs.20211209'
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N'
   priority: 2
   remediationComplexity: 1
@@ -156,6 +158,7 @@
         - 'https://itm4n.github.io/lsass-runasppl/'
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:P/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H'
   priority: 2
   remediationComplexity: 1
@@ -207,6 +210,7 @@
           https://learn.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-countermeasures
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N'
   priority: 2
   remediationComplexity: 1
@@ -264,6 +268,7 @@
       references: []
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:N'
   priority: 3
   remediationComplexity: 1
@@ -316,6 +321,7 @@
           https://blog.netwrix.com/2023/02/06/using-windows-defender-credential-guard-to-protect-privileged-credentials/
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N'
   priority: 2
   remediationComplexity: 3
@@ -373,6 +379,7 @@
           https://learn.microsoft.com/de-de/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L'
   priority: 3
   remediationComplexity: 1
@@ -440,6 +447,7 @@
           https://www.blackhillsinfosec.com/mitm6-strikes-again-the-dark-side-of-ipv6/
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N'
   priority: 1
   remediationComplexity: 1
@@ -485,6 +493,7 @@
       references: []
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:H/A:N'
   priority: 2
   remediationComplexity: 2
@@ -523,6 +532,7 @@
       references: []
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:H/A:N'
   details:
     - locale: EN
@@ -589,6 +599,7 @@
           https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/windows-defender-application-control
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N'
   priority: 2
   remediationComplexity: 1
@@ -641,6 +652,7 @@
       references: []
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H'
   priority: 3
   remediationComplexity: 1
@@ -705,6 +717,7 @@
           https://woshub.com/how-to-disable-netbios-over-tcpip-and-llmnr-using-gpo/
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N'
   details:
     - locale: EN
@@ -761,6 +774,7 @@
       references: []
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L'
   priority: 2
   remediationComplexity: 1
@@ -821,6 +835,7 @@
           https://learn.microsoft.com/en-us/windows/security/operating-system-security/network-security/windows-firewall/best-practices-configuring
       customFields: []
   category: System Security
+
 - cvssv3: null
   priority: 3
   remediationComplexity: 1
@@ -888,6 +903,7 @@
       references: []
       customFields: []
   category: System Security
+
 - cvssv3: null
   priority: 3
   remediationComplexity: 2
@@ -949,6 +965,7 @@
       references: []
       customFields: []
   category: System Security
+
 - cvssv3: null
   details:
     - locale: EN
@@ -983,6 +1000,7 @@
   category: System Security
   priority: 3
   remediationComplexity: 2
+
 - cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N'
   priority: 2
   remediationComplexity: 1
@@ -1035,6 +1053,7 @@
       references: []
       customFields: []
   category: System Security
+
 - cvssv3: null
   priority: 2
   remediationComplexity: 1
@@ -1082,6 +1101,7 @@
           https://learn.microsoft.com/en-us/powershell/scripting/learn/remoting/winrmsecurity?view=powershell-7.3
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
   priority: 4
   remediationComplexity: 1
@@ -1118,6 +1138,7 @@
           https://www.ired.team/offensive-security/privilege-escalation/unquoted-service-paths
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H'
   details:
     - locale: EN
@@ -1166,6 +1187,7 @@
   category: System Security
   priority: 3
   remediationComplexity: 1
+
 - cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H'
   priority: 3
   remediationComplexity: 1
@@ -1223,6 +1245,7 @@
         - 'https://www.scip.ch/en/?labs.20211209'
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
   priority: 3
   remediationComplexity: 1
@@ -1295,6 +1318,7 @@
           https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-secure-boot
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:L/A:N'
   details:
     - locale: EN
@@ -1354,6 +1378,7 @@
   category: System Security
   priority: 2
   remediationComplexity: 1
+
 - cvssv3: 'CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N'
   details:
     - locale: EN
@@ -1397,6 +1422,7 @@
           https://learn.microsoft.com/en-us/mem/configmgr/sum/get-started/software-update-point-ssl
       customFields: []
   category: System Security
+
 - cvssv3: 'CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N'
   priority: 3
   remediationComplexity: 2
