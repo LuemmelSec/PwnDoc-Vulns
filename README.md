@@ -8,3 +8,6 @@ You can see how to import them from the official documentation: https://pwndoc-n
 
 # YAML Parser  
 Added a small parser for the vuln exports that allows to export the vulns by category. I needed it for release of dedicated vulns to public. Maybe it comes in handy for whatever.
+
+# Report Template  
+Added a template for the reports that you can use as a starting point.
