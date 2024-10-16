@@ -658,41 +658,46 @@
   remediationComplexity: 1
   details:
     - locale: EN
-      title: NetBIOS Name Resolution / LLMNR Configuration
+      title: NetBIOS Name Resolution / LLMNR / mDNS Settings
       vulnType: Pentest
       description: >-
-        <p>NetBIOS Name Resolution and Link-Local Multicast Name Resolution
-        (LLMNR) are protocols used for name resolution in Windows networks. They
-        allow devices on a local network to discover and communicate with each
-        other by resolving computer names to IP addresses.</p><p>NetBIOS Name
-        Resolution: NetBIOS (Network Basic Input/Output System) is a legacy
-        protocol used for communication between devices on a local network.
-        NetBIOS Name Resolution translates NetBIOS names (computer names) to IP
-        addresses. It relies on broadcast messages to resolve names, which can
-        be inefficient and pose security risks.</p><p>LLMNR: LLMNR is a modern
-        replacement for NetBIOS Name Resolution introduced in Windows Vista and
-        later versions. It performs a similar function as NetBIOS Name
-        Resolution but uses multicast messages instead of broadcasts. LLMNR is
-        intended to resolve names on local networks when DNS name resolution
-        fails.</p><p>Security Concerns: Both NetBIOS Name Resolution and LLMNR
-        can introduce security risks, particularly when they are enabled on
-        systems connected to untrusted networks or outside the local
-        network.</p><ul><li><p>Man-in-the-Middle (MitM) Attacks: When NetBIOS
-        Name Resolution or LLMNR is enabled, an attacker can intercept and
-        respond to name resolution queries, posing as the intended device. This
-        allows them to redirect network traffic to their own system, enabling
-        potential eavesdropping, data interception, or modification of network
-        communications.</p></li><li><p>Name Spoofing and Identity Theft: By
-        responding to name resolution queries, an attacker can potentially spoof
-        the identity of legitimate devices on the network. This can lead to
-        confusion, unauthorized access, or identity
+        <p>NetBIOS Name Resolution, Link-Local Multicast Name Resolution (LLMNR)
+        and Multicast DNS (mDNS) are protocols used for name resolution in
+        Windows networks. They allow devices on a local network to discover and
+        communicate with each other by resolving computer names to IP
+        addresses.</p><p>NetBIOS Name Resolution: NetBIOS (Network Basic
+        Input/Output System) is a legacy protocol used for communication between
+        devices on a local network. NetBIOS Name Resolution translates NetBIOS
+        names (computer names) to IP addresses. It relies on broadcast messages
+        to resolve names, which can be inefficient and pose security
+        risks.</p><p>LLMNR: LLMNR is a modern replacement for NetBIOS Name
+        Resolution introduced in Windows Vista and later versions. It performs a
+        similar function as NetBIOS Name Resolution but uses multicast messages
+        instead of broadcasts. LLMNR is intended to resolve names on local
+        networks when DNS name resolution fails.</p><p>mDNS: mDNS (Multicast
+        DNS) is a protocol that allows devices on the same local network to
+        resolve hostnames without the need for a centralized DNS server. It is
+        part of the <strong>Z</strong>ero-Configuration Networking (Zeroconf)
+        suite and is widely used for device and service discovery, especially in
+        home networks or small office setups.</p><p>Security Concerns: NetBIOS
+        Name Resolution, LLMNR and mDNS can introduce security risks,
+        particularly when they are enabled on systems connected to untrusted
+        networks or outside the local network.</p><ul><li><p>Man-in-the-Middle
+        (MitM) Attacks: When NetBIOS Name Resolution, LLMNR or mDNS are enabled,
+        an attacker can intercept and respond to name resolution queries, posing
+        as the intended device. This allows them to redirect network traffic to
+        their own system, enabling potential eavesdropping, data interception,
+        or modification of network communications.</p></li><li><p>Name Spoofing
+        and Identity Theft: By responding to name resolution queries, an
+        attacker can potentially spoof the identity of legitimate devices on the
+        network. This can lead to confusion, unauthorized access, or identity
         theft.</p></li><li><p>Information Disclosure: Name resolution requests
         can leak sensitive information, such as computer names and domain
         information, which can be exploited by an attacker for reconnaissance or
         targeted attacks.</p></li></ul><p>To mitigate these security concerns,
-        it is generally recommended to disable NetBIOS Name Resolution and
-        LLMNR, especially on systems connected to untrusted networks or when not
-        required for local network functionality. Instead, relying on more
+        it is generally recommended to disable NetBIOS Name Resolution, LLMNR
+        and mDNS, especially on systems connected to untrusted networks or when
+        not required for local network functionality. Instead, relying on more
         secure name resolution mechanisms like DNS (Domain Name System) is
         recommended. Disabling these protocols can help reduce the attack
         surface and protect against potential MitM attacks and other security
@@ -703,14 +708,25 @@
         GPO.<br></p><img class="custom-image" src="64998d53b1221cb2c209eb7d"
         alt="NetBIOS settings in registry"><p></p><p>You can change all adapters
         to 2 like so:</p><p><code>$regkey =
-        "HKLM:SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces"</code></p><p><code>Get-ChildItem
+        "HKLM:SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces"</code><br><code>Get-ChildItem
         $regkey |foreach { Set-ItemProperty -Path "$regkey\$($_.pschildname)"
         -Name NetbiosOptions -Value 2 -Verbose}</code></p><p>The same applies to
         LLMNR. However, it can only be disabled via GPO or a script.</p><img
         class="custom-image" src="64998dceb1221cb2c209eb83" alt="GPO settings to
         disable LLMNR"><p><code>Computer Configuration -&gt; Administrative
         Templates -&gt; Network -&gt; DNS Client -&gt; Turn off multicast name
-        resolution</code></p>
+        resolution</code></p><p><code>set-ItemProperty -Path
+        "HKLM:\Software\Policies\Microsoft\Windows NT\DNSClient" -name
+        EnableMulticast -Value 0<br>new-ItemProperty -Path
+        "HKLM:\Software\Policies\Microsoft\Windows NT\DNSClient" -name
+        "EnableMulticast" -Value 0 -Type DWord</code><br><br>mDNS can be
+        disabled via the registry as well:<br><code>Set-ItemProperty
+        "HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters\" -Name
+        EnableMDNS -Value 0
+
+        New-ItemProperty
+        "HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters\" -Name
+        EnableMDNS -Value 0 -Type DWord</code></p>
       references:
         - 'https://luemmelsec.github.io/Relaying-101/'
         - >-
