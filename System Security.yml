@@ -787,7 +787,9 @@
         (always)"</code></p><p>It's important to test the changes in a
         controlled environment and verify that SMB signing is working as
         expected before applying the GPO to production systems.</p>
-      references: []
+      references: 
+        - >-
+        'https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/active-directory-hardening-series---part-6-–-enforcing-smb-signing/4272168'
       customFields: []
   category: System Security
 
