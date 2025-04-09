@@ -2,7 +2,7 @@
   category: System Security
   details:
     - locale: EN
-      title: Powershell Configuration
+      title: Powershell Hardening
       vulnType: Pentest
       description: >-
         <p>PowerShell is a task automation and configuration management
@@ -129,7 +129,7 @@
   remediationComplexity: 1
   details:
     - locale: EN
-      title: LSA Protection Configuration
+      title: LSA Protection Settings
       vulnType: Pentest
       description: >-
         <p>LSA Protection, also known as RunAsPPL (Protected Process Light), is
@@ -164,7 +164,7 @@
   remediationComplexity: 1
   details:
     - locale: EN
-      title: Disk Encryption Configuration
+      title: Disk Encryption Settings
       vulnType: Pentest
       description: >-
         <p>Disk encryption is a security measure used to protect the data stored
@@ -274,7 +274,7 @@
   remediationComplexity: 1
   details:
     - locale: EN
-      title: Credential Guard Configuration
+      title: Credential Guard Settings
       vulnType: Pentest
       description: >-
         <p>Credential Guard is a security feature introduced in Windows 10 and
@@ -327,7 +327,7 @@
   remediationComplexity: 3
   details:
     - locale: EN
-      title: Applocker Configuration
+      title: Applocker Settings
       vulnType: Pentest
       description: >-
         <p>AppLocker is a security feature introduced in Windows 7 and Windows
@@ -787,9 +787,7 @@
         (always)"</code></p><p>It's important to test the changes in a
         controlled environment and verify that SMB signing is working as
         expected before applying the GPO to production systems.</p>
-      references: 
-        - >-
-        'https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/active-directory-hardening-series---part-6-–-enforcing-smb-signing/4272168'
+      references: []
       customFields: []
   category: System Security
 
@@ -859,7 +857,7 @@
   remediationComplexity: 1
   details:
     - locale: EN
-      title: Antivirus Configuration
+      title: Antivirus Settings
       vulnType: Pentest
       description: >-
         <p>Antivirus (AV) software, also known as antivirus or anti-malware
@@ -1024,7 +1022,7 @@
   remediationComplexity: 1
   details:
     - locale: EN
-      title: RDP Configuration
+      title: RDP Settings
       vulnType: Pentest
       description: >-
         <p><br>Remote Desktop Protocol (RDP) is a technology developed by
@@ -1154,327 +1152,6 @@
       references:
         - >-
           https://www.ired.team/offensive-security/privilege-escalation/unquoted-service-paths
-      customFields: []
-  category: System Security
-
-- cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H'
-  details:
-    - locale: EN
-      title: Password Policy
-      vulnType: Pentest
-      description: >-
-        <p>Using weak passwords has several security implications and is posing
-        one of the biggest risks in the IT security threat landscape with the
-        following impacts:</p><ul><li><p>Easy to guess: Bad passwords are often
-        easily predictable, making it easier for hackers to guess or crack
-        them.</p></li><li><p>Dictionary attacks: Poor passwords are susceptible
-        to dictionary attacks, where a hacker uses a list of commonly used
-        passwords to gain access to an account.</p></li><li><p>Brute force
-        attacks: In a brute force attack, a hacker tries every possible
-        combination of characters to crack a password, making a weak password
-        easier to crack.</p></li><li><p>Reuse: People often reuse the same
-        password across multiple accounts, putting all their information at risk
-        if a single password is compromised.</p></li><li><p>...</p><p></p><p>If
-        the passwords used by the users are not complex enough they can easily
-        be guessed or the clear text passwords can trivially be recovered if an
-        attacker gets access to their hashed values.</p></li></ul>
-      remediation: >-
-        <p>The following settings and measures can help to harden access to
-        users and their credentials:</p><ul><li><p>Implementing multi-factor
-        authentication.</p></li><li><p>Implementing a secure domain wide
-        password policy in case of Active Directory. At least 12 characters for
-        low privileged and 14 characters for high privileged accounts. For
-        service accounts at least 20 characters should be
-        used.</p></li><li><p>Using a password manager. Best in combination with
-        the possibility for fine granular rights management and MFA
-        authentication.</p></li><li><p>Password blacklisting. Ban passwords with
-        the company name, seasons, passwords on leaked lists
-        etc.</p></li><li><p>Implementing password policies based on the access
-        rights of the accounts affected.</p></li><li><p>Regular password
-        audits.</p></li><li><p>User awareness campaigns. Especially security
-        related trainings for technical staff.</p><p></p></li></ul><p>Best
-        practices for the Domain Password
-        Policy:</p><ul><li><p>ComplexityEnabled =
-        True</p></li><li><p>LockoutDuration &gt;= 15
-        Minutes</p></li><li><p>LockoutObservationWindow &gt;= 15
-        Minutes</p></li><li><p>LockoutThreshold &lt;= 10
-        Minutes</p></li><li><p>MinPasswordLength &gt;=
-        12</p></li><li><p>ReversibleEncryptionEnabled = False</p></li></ul>
-      references: []
-      customFields: []
-  category: System Security
-  priority: 3
-  remediationComplexity: 1
-
-- cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H'
-  priority: 3
-  remediationComplexity: 1
-  details:
-    - locale: EN
-      title: Co-installer Configuration
-      vulnType: Pentest
-      description: >-
-        <p>The Windows Co-installer [1] feature is a mechanism used in Windows
-        operating systems to facilitate the installation and management of
-        device drivers. Co-installers are DLL (Dynamic Link Library) files that
-        can be included alongside a device driver package. They provide
-        additional functionality and instructions to the Windows Installer
-        service during the installation or update of a
-        driver.</p><p>Co-installers are used to perform various tasks, such as
-        configuring hardware settings, updating firmware, handling complex
-        driver installations or even installing additional
-        software.</p><p>However, the use of Co-installers can have security
-        implications for the following reasons:</p><ul><li><p><strong>Privilege
-        Escalation</strong>: Co-installers might run with elevated privileges
-        during the driver installation process. If a Co-installer has
-        vulnerabilities or malicious code, it could potentially be exploited by
-        attackers to escalate their privileges and gain control of the
-        system.</p></li><li><p><strong>Code Execution</strong>: Co-installers
-        execute code as part of the driver installation process. Malicious
-        Co-installers could execute harmful code, leading to various security
-        issues, such as unauthorized access, data manipulation, or system
-        compromise.</p></li><li><p><strong>Driver Tampering</strong>:
-        Co-installers can modify driver settings and configurations. If an
-        attacker replaces a legitimate Co-installer with a malicious one, they
-        could tamper with the driver's behavior, potentially causing system
-        instability or security vulnerabilities.</p></li><li><p><strong>Driver
-        Signature Bypass</strong>: Co-installers can sometimes be used to bypass
-        driver signature enforcement, which is a security feature that ensures
-        drivers are digitally signed by trusted entities. This could enable the
-        installation of unsigned or malicious drivers, further compromising
-        system security.</p></li></ul><p>There are lots of Co-installers known
-        to attackers that can be abused for privilege escalation. Amongst the
-        most common ones was the one which comes while installing certain Razer
-        devices [2].</p>
-      remediation: >-
-        <p>Disable the ability to install Co-installers by settings the
-        following registry
-        key:</p><p><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device
-        Installer\DisableCoInstallers = 1</code></p><p>Users will have to
-        install the software that comes with the device drivers manual if really
-        needed.</p>
-      references:
-        - >-
-          [1]
-          https://learn.microsoft.com/en-us/windows-hardware/drivers/install/writing-a-co-installer
-        - >-
-          [2]
-          https://www.bleepingcomputer.com/news/microsoft/how-to-block-windows-plug-and-play-auto-installing-insecure-apps
-        - 'https://www.scip.ch/en/?labs.20211209'
-      customFields: []
-  category: System Security
-
-- cvssv3: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N'
-  priority: 3
-  remediationComplexity: 1
-  details:
-    - locale: EN
-      title: Secure Boot Configuration
-      vulnType: Pentest
-      description: >-
-        <p>Secure Boot is a security feature in Windows (and other operating
-        systems) that helps protect the boot process from malware and
-        unauthorized modifications. Here's a brief overview:</p><p>Secure Boot
-        works by ensuring that only digitally signed and trusted bootloaders and
-        operating system components are allowed to run during the startup
-        process. This prevents the execution of malicious code or unauthorized
-        firmware and driver modifications that could compromise the system's
-        integrity.</p><p>Key points about Secure Boot on
-        Windows:</p><ul><li><p><strong>UEFI Requirement</strong>: Secure Boot
-        relies on the Unified Extensible Firmware Interface (UEFI) in modern
-        computers. It's typically enabled or disabled in the UEFI firmware
-        settings.</p></li><li><p><strong>Digital Signatures</strong>:
-        Bootloaders, kernel files, and drivers must have valid digital
-        signatures from trusted Certificate Authorities (CAs) to be loaded
-        during the boot process.</p></li><li><p><strong>Enforcement</strong>:
-        When Secure Boot is enabled, the UEFI firmware checks the digital
-        signatures of boot components and refuses to load them if they're not
-        signed or not signed by trusted
-        sources.</p></li><li><p><strong>Protection Against Rootkits</strong>:
-        Secure Boot helps protect against rootkits and other low-level malware
-        that attempt to compromise the boot
-        process.</p></li><li><p><strong>Compatibility Mode</strong>: Some UEFI
-        systems offer a compatibility mode that allows non-signed or legacy
-        bootloaders to run. However, this weakens the security provided by
-        Secure Boot.</p></li><li><p><strong>Hardware Requirements</strong>:
-        Secure Boot requires hardware support in the form of a UEFI firmware
-        with Secure Boot capabilities.</p></li></ul><p>By enforcing the use of
-        trusted boot components, Secure Boot helps safeguard the integrity of
-        the operating system and protects against certain types of attacks that
-        target the boot process. It's an essential security feature for modern
-        Windows systems, especially those running Windows 8 and later
-        versions.</p><p>If Secure Boot is not enabled on a system, attackers may
-        exploit this vulnerability to carry out various malicious activities,
-        including:</p><ul><li><p><strong>Bootkit Attacks</strong>: Attackers can
-        inject malicious bootloaders or rootkits during the boot process,
-        allowing them to gain control of the system and potentially hide their
-        presence from antivirus and security
-        software.</p></li><li><p><strong>Malware Persistence</strong>: Without
-        Secure Boot, malware can persistently infect the system, making it
-        difficult for users to remove the malicious software, even after
-        traditional disinfection attempts.</p></li><li><p><strong>Unauthorized
-        Kernel Modifications</strong>: Attackers can load unsigned or malicious
-        kernel modules, giving them control over the operating system and
-        potentially compromising its integrity and
-        security.</p></li><li><p><strong>Firmware Tampering</strong>: They can
-        modify firmware settings and configurations, potentially leading to
-        hardware vulnerabilities or backdoors that are difficult to detect and
-        remove.</p></li><li><p><strong>Bypassing Security Measures</strong>:
-        Secure Boot helps enforce driver and operating system component
-        integrity. When it's disabled, attackers can potentially load unsigned
-        or tampered components, bypassing security measures and exposing the
-        system to a higher risk of exploitation.</p></li></ul><p>In summary, the
-        absence of Secure Boot can leave a system more vulnerable to a range of
-        attacks that target the boot process and operating system integrity,
-        making it easier for attackers to compromise and control the system.</p>
-      remediation: >-
-        <p>Enable Secure Boot via the following registry
-        key:</p><p><code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State\UEFISecureBootEnabled
-        = 1</code></p><p></p>
-      references:
-        - >-
-          https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-secure-boot
-      customFields: []
-  category: System Security
-
-- cvssv3: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:L/A:N'
-  details:
-    - locale: EN
-      title: UAC Configuration
-      vulnType: Pentest
-      description: >-
-        <p>Windows UAC (User Account Control) is a security feature in Windows
-        operating systems that helps prevent unauthorized changes to your
-        computer by requiring administrator-level permission for certain actions
-        and system-level tasks. When a user or application attempts to perform
-        an action that requires elevated privileges, UAC prompts the user for
-        permission or prompts for an administrator's password, depending on the
-        UAC settings.</p><p>Security implications of disabling or setting UAC to
-        the weakest setting:</p><ul><li><p><strong>Elevated Attack
-        Surface</strong>: Disabling UAC or setting it to the lowest level
-        reduces the number of prompts for administrator privileges, making it
-        easier for malicious software to execute privileged actions without user
-        consent. This increases the attack surface and the risk of malware
-        infections.</p></li><li><p><strong>Unauthorized System Changes</strong>:
-        Without UAC, applications and scripts can make changes to system
-        settings, install software, or modify critical files without any user
-        intervention. This can lead to unauthorized system changes and
-        potentially compromise the system's stability and
-        security.</p></li><li><p><strong>Credential Theft</strong>: Weaker UAC
-        settings may lead users to enter their administrator credentials more
-        frequently, especially when prompted by malicious software. Attackers
-        can then capture these credentials and use them for malicious
-        purposes.</p></li><li><p><strong>Malware Evasion</strong>: Malware may
-        attempt to disable or weaken UAC to operate more stealthily and avoid
-        detection. This can make it harder for security software to identify and
-        mitigate malware infections.</p></li><li><p><strong>Data Loss</strong>:
-        Weaker UAC settings can allow unauthorized applications to access and
-        modify sensitive user data, potentially leading to data loss or
-        theft.</p></li></ul><p>In summary, UAC is an important security feature
-        in Windows that helps prevent unauthorized changes and reduce the risk
-        of malware infections. Disabling UAC or setting it to a weak level can
-        significantly increase the system's vulnerability to various security
-        threats and should be avoided for the sake of system security. It's
-        generally recommended to keep UAC at its default or strongest
-        setting.</p>
-      remediation: >-
-        <p>Enable UAC via GPO or registry.</p><p><code>"Computer Configuration"
-        &gt; "Windows Settings" &gt; "Security Settings" &gt; "Local Policies"
-        &gt; "Security Options."</code></p><ul><li><p>"Enabled" corresponds to
-        the highest security level, "Always notify
-        me."</p></li><li><p>"Disabled" corresponds to the lowest security level,
-        "Never notify."</p></li><li><p>"Not Configured" leaves the UAC settings
-        at their
-        default.</p></li></ul><p><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System</code></p><ul><li><p>Use
-        "1" for the highest security level, "Always notify
-        me."</p></li><li><p>Use "0" for the lowest security level, "Never
-        notify."</p></li></ul><p></p>
-      references:
-        - >-
-          https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control/how-it-works
-      customFields: []
-  category: System Security
-  priority: 2
-  remediationComplexity: 1
-
-- cvssv3: 'CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N'
-  details:
-    - locale: EN
-      title: WSUS Client Configuration
-      vulnType: Pentest
-      description: >-
-        <p>WSUS (Windows Server Update Services) is a Microsoft tool that allows
-        organizations to manage and distribute updates released by Microsoft to
-        Windows computers within their network. WSUS client settings refer to
-        the configurations on individual Windows machines that determine how
-        they interact with a WSUS server to receive and install
-        updates.</p><p>Using HTTP for WSUS communication can pose security risks
-        for several reasons:</p><ul><li><p><strong>Lack of Encryption</strong>:
-        HTTP does not encrypt the data transmitted between the WSUS server and
-        clients. This means that update metadata, files, and potentially
-        sensitive information are sent in plain text over the network. Attackers
-        could intercept and eavesdrop on this traffic, potentially gaining
-        insight into the systems being updated and the updates
-        themselves.</p></li><li><p><strong>Tampering Risk</strong>: Without
-        encryption, there is a risk that malicious actors could tamper with the
-        update files or metadata during transit. This could result in
-        compromised updates being applied to client systems, potentially
-        introducing malware or
-        vulnerabilities.</p></li><li><p><strong>Credential Exposure</strong>: If
-        WSUS clients are configured to use HTTP and require authentication
-        (e.g., for proxy authentication), the credentials used for
-        authentication may also be transmitted in plaintext, making them
-        susceptible to interception.</p></li><li><p><strong>Man-in-the-Middle
-        Attacks</strong>: HTTP traffic is vulnerable to man-in-the-middle (MITM)
-        attacks, where an attacker intercepts and potentially modifies the
-        communication between the client and server. This could allow an
-        attacker to inject malicious updates or steal sensitive
-        data.</p></li></ul>
-      remediation: >-
-        <p>To address these security concerns, it is recommended to use HTTPS
-        for WSUS communication. HTTPS provides encryption and authentication,
-        ensuring the confidentiality and integrity of update data and reducing
-        the risk of tampering, eavesdropping, and MITM attacks.</p>
-      references:
-        - >-
-          https://learn.microsoft.com/en-us/mem/configmgr/sum/get-started/software-update-point-ssl
-      customFields: []
-  category: System Security
-
-- cvssv3: 'CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N'
-  priority: 3
-  remediationComplexity: 2
-  details:
-    - locale: EN
-      title: IPv6 Configuration
-      vulnType: Pentest
-      description: >-
-        <p>IPv6 is the latest version of the Internet Protocol, designed to
-        replace IPv4, and it significantly expands the address space available
-        for devices connected to the internet, allowing for a vastly larger
-        number of unique IP addresses.</p><p>Man-in-the-Middle (MitM) attacks
-        against IPv6-enabled clients are a common way of abusing IPv6 enabled
-        clients.</p><p>IPv6 is enabled by default on all newer Windows versions
-        and broadcast requests for DHCPv6 are sent out.<br>An attacker in the
-        same network segment can respond to those requests and assign the
-        attacked client an IPv6 address within the link-local range. In the
-        provided DHCPv6 settings, the attacker sets a rogue DNS server to
-        redirect the traffic of the attacked clients. As IPv6 per default takes
-        precedence over IPv4 those settings will be honored first.</p><p></p>
-      remediation: >-
-        <p>If possible, completely disable IPv6 on all the network interfaces.
-        But be aware that some internal server functions rely on IPv6 e.g.
-        Domain Controllers and Exchange servers. So act carefully on
-        servers.</p><p>Alternatively IPv4 can be given precedence over IPv6, so
-        that firstly you valid IPv4 configuration will be prioritized.</p><p>If
-        IPv6 is really needed, you should specify valid values for stuff like
-        DNS server and Gateway.</p><p>Some IDS systems and even AVs are capable
-        of detecting such attacks and act on them.</p>
-      references:
-        - >-
-          https://blog.fox-it.com/2018/01/11/mitm6-compromising-ipv4-networks-via-ipv6/
-        - >-
-          https://www.blackhillsinfosec.com/mitm6-strikes-again-the-dark-side-of-ipv6/
       customFields: []
   category: System Security
 
